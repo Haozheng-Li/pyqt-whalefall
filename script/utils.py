@@ -1,5 +1,6 @@
 import time
 import logging
+from PySide6.QtCore import QFileInfo
 
 logging.basicConfig(level=logging.INFO)
 
@@ -12,3 +13,7 @@ def Log(func):
         logging.debug(' End func: {}, time consuming: {}s'.format(func.__name__, time.time()-begin_time))
         return result
     return InnerFunction
+
+
+def getRootPath():
+    return QFileInfo(__file__).absolutePath() + '/../'

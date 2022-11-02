@@ -1,7 +1,11 @@
 import sys
+import utils
 
 from PySide6.QtWidgets import QMainWindow, QApplication
+from PySide6.QtGui import QIcon
 from PySide6.QtCore import Qt
+
+from define import *
 
 widgets = None
 
@@ -11,8 +15,15 @@ class MainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.dragPos = None
 
+        self.initUI()
+    
+    def initUI(self):
+        self.setWindowTitle(APP_TITLE)
+        self.setWindowIcon(QIcon(APP_ICON))
+        self.show()
+
     def mousePressEvent(self, event):
-        self.dragPos = event.globalPos()
+        self.dragPos = event.globalPosition()
 
         if event.buttons() == Qt.LeftButton:
             print('Mouse click: LEFT CLICK')

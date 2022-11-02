@@ -6,4 +6,5 @@
 /.vscode/
 /.idea/
 
-
+# Python
+*.py[cod]
