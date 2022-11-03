@@ -1,37 +1,25 @@
 import sys
-import utils
 
-from PySide6.QtWidgets import QMainWindow, QApplication
-from PySide6.QtGui import QIcon
-from PySide6.QtCore import Qt
-
+from PySide6.QtWidgets import QApplication
+from widgets import main_widget, splash_panel_widget
 from define import *
 
-widgets = None
+
+app = QApplication(sys.argv)
 
 
-class MainWindow(QMainWindow):
-    def __init__(self, parent=None):
-        QMainWindow.__init__(self)
-        self.dragPos = None
+if USE_SPLASH_PANEL:
+    splash_screen = splash_panel_widget.getSplashPanel(use_gif=True)
+    splash_screen.show()
+    app.processEvents()
 
-        self.initUI()
-    
-    def initUI(self):
-        self.setWindowTitle(APP_TITLE)
-        self.setWindowIcon(QIcon(APP_ICON))
-        self.show()
-
-    def mousePressEvent(self, event):
-        self.dragPos = event.globalPosition()
-
-        if event.buttons() == Qt.LeftButton:
-            print('Mouse click: LEFT CLICK')
-        if event.buttons() == Qt.RightButton:
-            print('Mouse click: RIGHT CLICK')
+    main_widget = main_widget.MainWindow()
+    main_widget.show()
+    splash_screen.finish(main_widget)
+    splash_screen.deleteLater()
+else:
+    main_widget = main_widget.MainWindow()
+    main_widget.show()
 
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    window = MainWindow()
-    sys.exit(app.exec())
+sys.exit(app.exec())
