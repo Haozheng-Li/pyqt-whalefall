@@ -1,7 +1,8 @@
 import sys
+import find_package
 
 from PySide6.QtWidgets import QApplication
-from widgets import main_widget, splash_panel_widget
+from widgets import main_window, splash_panel_widget
 from define import *
 
 
@@ -13,13 +14,13 @@ if USE_SPLASH_PANEL:
     splash_screen.show()
     app.processEvents()
 
-    main_widget = main_widget.MainWindow()
-    main_widget.show()
-    splash_screen.finish(main_widget)
+    main_window = main_window.MainWindow()
+    main_window.show()
+    splash_screen.finish(main_window)
     splash_screen.deleteLater()
 else:
-    main_widget = main_widget.MainWindow()
-    main_widget.show()
+    main_window = main_window.MainWindow()
+    main_window.show()
 
 
 sys.exit(app.exec())

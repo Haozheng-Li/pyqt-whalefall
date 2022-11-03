@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>image/icon/icon_excel.png</file>
+    <file>image/icon/icon_toggle.png</file>
+    <file>image/icon/icon_home.png</file>
+    <file>image/icon/icon_settings.png</file>
+  </qresource>
+</RCC>
